@@ -1,6 +1,7 @@
 # cl-md-notes
 A simple Markdown notes editor in Common Lisp inspired by the [React Server Components demo](https://github.com/reactjs/server-components-demo) 
 
+![cl-md-notes.gif](cl-md-notes.gif)
 
 ## Usage
 ```lisp
