@@ -1,0 +1,34 @@
+{% extends "layouts/default.html" %}
+{% block title %}cl-md-notes - Common Lisp Markdown notes{% endblock %}
+{% block content %}
+<div class="main">
+  <section class="col sidebar">
+    <section class="sidebar-header">
+      <strong>cl-md-notes</strong>
+    </section>
+    <section class="sidebar-menu" role="menubar">
+      <form class="search" action="" role='search'>
+	<label class="offscreen" for="" for="sidebar-search-input"> Search for a note by title</label>
+	<input id="sidebar-search-input" type="text"
+	       placeholder='Search' 
+	       name="query" 
+	       value=""
+	       hx-post="/search" 
+	       hx-trigger="keyup delay:500ms"
+	       _="on htmx:beforeSend add .spinner--active to #search-spinner on htmx:afterOnLoad remove .spinner--active from #search-spinner"
+	       />
+	<div id="search-spinner" class="spinner" role='progressbar' aria-label="search loading spinner" aria-busy="true"></div>
+      </form>
+      <button class="edit-button edit-button--solid" role='menuitem' hx-get="/new" hx-target="#note-viewer"> New</button>
+    </section>
+    <nav>
+      {% include "_notes-list.html" %}
+    </nav>
+  </section>
+  <section id="note-viewer" class="col note-viewer">
+    {% include "_loading.html" %}
+    {% include "_empty.html" %}
+  </section>
+
+</div>
+{% endblock %}

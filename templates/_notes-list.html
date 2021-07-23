@@ -1,0 +1,27 @@
+<ul id="notes-list" class="notes-list" hx-swap-oob="true">
+  {% for note in notes %}
+  <li>
+    <div class="sidebar-note-list-item" _="on load set excerpt to false">
+      <header class="sidebar-note-header">
+	<strong> {{note.title}}</strong>
+	<small> {{note.createdat}}</small>
+      </header>
+      <button class="sidebar-note-open"
+	      hx-get="/note/{{note.id}}" 
+	      style="border: 1px solid transparent;"
+	      hx-target="#note-viewer"
+	      hx-indicator=".htmx-indicator"
+	      > Open note for preview </button>
+      <button class="sidebar-note-toggle-expand"
+	      _="on click toggle .hidden on #note-excerpt-{{note.id}} 
+		 if #expand-btn-{{note.id}}.src.includes('chevron-up') then put '/images/chevron-down.svg' into #expand-btn-{{note.id}}.src
+		 else put '/images/chevron-up.svg' into #expand-btn-{{note.id}}.src end"
+	      >
+	<img id="expand-btn-{{note.id}}" src='/images/chevron-up.svg' alt='Expand' width='10px' height='10px'/>
+
+      </button>
+      <p class="sidebar-note-excerpt hidden" id="note-excerpt-{{note.id}}"> {{note.content}} </p>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
