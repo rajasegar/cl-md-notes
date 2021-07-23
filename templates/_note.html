@@ -2,7 +2,7 @@
   <div class="note-header">
     <h1 class="note-title">{{note.title}}</h1>
     <div class="note-menu" role="menubar">
-      <small class="note-updated-at" role="status">Last updated on 10 Mar 2021 at 7:46 PM</small>
+      <small class="note-updated-at" role="status">Last updated on {{note.updated-at}}</small>
       <button class="edit-button edit-button--outline" hx-get="/edit/{{note.id}}" hx-target="#note-viewer" role="menuitem">Edit</button>
     </div>
   </div>

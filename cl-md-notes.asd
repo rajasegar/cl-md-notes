@@ -19,8 +19,11 @@
                "datafly"
                "sxql"
 
-	       ;; for Markdown
-	       "cl-markdown")
+              ;; for Markdown
+              "cl-markdown"
+
+              ;; date time
+              "local-time")
   :components ((:module "src"
                 :components
                 ((:file "main" :depends-on ("config" "view" "db"))
